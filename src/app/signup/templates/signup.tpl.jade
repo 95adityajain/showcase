@@ -1,4 +1,21 @@
 h1 Sign Up
+form(no-validate, name="signupForm")
+    div.form-group
+        label(for="username") Username
+        input(type="text", class="form-control", id="username", name="username", placeholder="Enter Username", ng-model="vm.signupState.username", required)
+        span(ng-show="signupForm.username.$error.required && !signupForm.username.$pristine") This field is required
+        span(ng-show="!signupForm.username.$pristine && !vm.isValidUsername()") Not a valid username
+    div.form-group
+        label(for="password") Password
+        input(type="password", class="form-control", id="password", name="password", placeholder="Enter Password", ng-model="vm.signupState.password", required)
+        span(ng-show="signupForm.password.$error.required && !signupForm.password.$pristine") This field is required
+    div.form-group
+        label(for="password") Password
+        input(type="password", class="form-control", id="passwordAgain", name="passwordAgain", placeholder="Enter Password", ng-model="vm.signupState.passwordAgain", required)
+        span(ng-show="signupForm.passwordAgain.$error.required && !signupForm.passwordAgain.$pristine") This field is required
+        span(ng-show="!signupForm.passwordAgain.$pristine && !vm.doesPasswordMatch()") Password does not match
 div
-    button.btn.btn-default(ng-click='vm.signUp()') Create User
+    button.btn.btn-default(ng-click='vm.signUp()', ng-disabled="signupForm.$invalid || !vm.doesPasswordMatch() || !vm.isValidUsername()") Create User
 a(ui-sref="home") Home
+br
+a(ui-sref="login") login

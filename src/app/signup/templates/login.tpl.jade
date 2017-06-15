@@ -1,0 +1,16 @@
+h1 Login
+form(no-validate, name="loginForm")
+    div.form-group
+        label(for="username") Username
+        input(type="text", class="form-control", id="username", name="username", placeholder="Enter Username", ng-model="vm.loginState.username", required)
+        span(ng-show="loginForm.username.$error.required && !loginForm.username.$pristine") This field is required
+    div.form-group
+        label(for="password") Password
+        input(type="password", class="form-control", id="password", name="password", placeholder="Enter Password", ng-model="vm.loginState.password", required)
+        span(ng-show="loginForm.password.$error.required && !loginForm.password.$pristine") This field is required
+div
+    button.btn.btn-default(ng-click='vm.login()', ng-disabled="loginForm.$invalid") Login
+div(ng-show="vm.loginState.error") Invalid Username/Password
+a(ui-sref="home") Home
+br
+a(ui-sref="signup") Signup

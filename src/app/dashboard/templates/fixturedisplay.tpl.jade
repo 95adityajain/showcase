@@ -1,0 +1,18 @@
+div(class="progress", ng-show="vm.fixtures.length === 0")
+  div(class="progress-bar progress-bar-info progress-bar-striped", style="width: 100%")
+
+table.table(ng-show="vm.fixtures.length > 0")
+  thead
+    tr
+      th Fixture_Date
+      th Home_Team
+      th Home_Team_Score
+      th Away_Team_Score
+      th Away_Team
+  tboby
+    tr(ng-repeat="fixture in vm.fixtures")
+      td {{fixture.date}}
+      td {{fixture.homeTeamName}}
+      td {{!isNaN(fixture.result.goalsHomeTeam)? fixture.result.goalsHomeTeam : '-'}}
+      td {{!isNaN(fixture.result.goalsAwayTeam)? fixture.result.goalsAwayTeam : '-'}}
+      td {{fixture.awayTeamName}}
